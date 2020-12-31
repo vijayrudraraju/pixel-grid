@@ -31,6 +31,7 @@ function Pixels (data, opts) {
   var canvas = document.createElement('canvas')
   canvas.width = width
   canvas.height = height
+  console.log('VIJX', { width, height })
   if (opts.root) opts.root.appendChild(canvas)
 
   var colors = opts.formatted ? data : convert(data)
@@ -81,6 +82,7 @@ function Pixels (data, opts) {
   }
 
   var draw = function (positions, colors) {
+    console.log('VIJX', 'draw', { positions, colors })
     regl.clear({
       color: opts.background.concat([1])
     })
@@ -101,6 +103,7 @@ function Pixels (data, opts) {
 
 Pixels.prototype.update = function (data) {
   var self = this
+  console.log('VIJX', 'update', self)
   var colors = self._formatted ? data : convert(data)
   self._draw(self._buffer.position, self._buffer.color(colors))
 }
